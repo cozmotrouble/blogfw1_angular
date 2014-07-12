@@ -1,0 +1,32 @@
+<!--<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+-->
+ 
+<section class="blogslist">
+
+   <div class="page-header">
+    <h1>Blog Entries</h1>
+  </div>
+
+
+
+  <table   class="table table-striped table-bordered table-hover table-condensed   ">
+        <tr>
+            <th class="">Title</th>
+            <th>Author</th>
+            <th>Number of comments</th>
+        </tr>
+        <tr ng-repeat="item in blogentries">
+            <td>
+             <a href="#/details/{{item.postID}}">	
+             	{{item.title}} 
+            	 </a>
+            </td>
+            <td>{{item.author.firstName}} {{item.author.lastName}}  </td>
+            <td> {{item.comments.length}}</td> 
+      
+        </tr>
+    </table>
+ 
+
+</section> 

@@ -1,0 +1,172 @@
+<!---<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>--->
+<!doctype html>
+<html ng-app="Demo" ng-controller="DemoController">
+<head>
+    <meta charset="utf-8" />
+ 
+    <title>
+        Adding An ngRepeat List Delimiter In AngularJS
+    </title>
+</head>
+<body>
+ 
+    <h1>
+        Adding An ngRepeat List Delimiter In AngularJS
+    </h1>
+ 
+    <form ng-submit="addFriend()">
+ 
+        <input type="text" ng-model="newFriendName" size="20" />
+ 
+        <input type="submit" value="Add Friend" />
+ 
+    </form>
+ 
+    <p ng-show="friends.length">
+ 
+        <strong>Friends</strong>:
+ 
+        <!--
+            Notice that we define the comma as the list delimiter
+            for our ngRepeat directive.
+        -->
+        <span
+            ng-repeat="friend in friends"
+            bn-repeat-delimiter=",">
+ 
+            {{ friend }}
+ 
+        </span>
+ 
+    </p>
+ 
+ 
+ 
+    <!-- Load jQuery and AngularJS from the CDN. -->
+    <script
+        type="text/javascript"
+        src="//code.jquery.com/jquery-1.9.1.min.js">
+    </script>
+    <script
+        type="text/javascript"
+        src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js">
+    </script>
+ 
+    <!-- Load the app module and its classes. -->
+    <script type="text/javascript">
+ 
+ 
+        // Define our AngularJS application module.
+        var demo = angular.module( "Demo", [] );
+ 
+ 
+        // -------------------------------------------------- //
+        // -------------------------------------------------- //
+ 
+ 
+        // I am the main controller for the application.
+        demo.controller(
+            "DemoController",
+            function( $scope ) {
+ 
+ 
+                // -- Define Scope Methods. ----------------- //
+ 
+ 
+                // I add a new friend to the list and reset the model.
+                $scope.addFriend = function() {
+ 
+                    $scope.friends.push( $scope.newFriendName );
+ 
+                    $scope.newFriendName = "";
+ 
+                };
+ 
+ 
+                // -- Define Scope Variables. --------------- //
+ 
+ 
+                // I am the list of friends to show.
+                $scope.friends = [ "Sarah" ];
+ 
+                // I am the name of the new friend being added.
+                $scope.newFriendName = "Joanna";
+ 
+ 
+            }
+        );
+ 
+ 
+        // -------------------------------------------------- //
+        // -------------------------------------------------- //
+ 
+ 
+        // I add a delimiter to the end of the list items. This is
+        // designed to be used in conjunction with ngRepeat. It will
+        // add the delimiter to all list items; but it will only show
+        // on all but the $last ngRepeat item.
+        demo.directive(
+            "bnRepeatDelimiter",
+            function() {
+ 
+ 
+                // I compile the list, injecting in the conditionally
+                // visible delimiter onto the end of the template.
+                function compile( element, attributes ) {
+ 
+                    // Get the delimiter that goes between each item.
+                    var delimiter = ( attributes.bnRepeatDelimiter || "," );
+ 
+                    // The delimiter will show on all BUT the last
+                    // item in the list.
+                    var delimiterHtml = (
+                        "<span ng-show=' ! $last '>" +
+                            delimiter +
+                        "</span>"
+                    );
+ 
+                    // Add the delimiter to the end of the list item,
+                    // making sure to add the existing whitespace back
+                    // in after the delimiter.
+                    var html = element.html().replace(
+                        /(\s*$)/i,
+                        function( whitespace ) {
+ 
+                            return( delimiterHtml + whitespace );
+ 
+                        }
+                    );
+ 
+                    // Update the compiled HTML.
+                    element.html( html );
+ 
+                }
+ 
+ 
+                // Return the directive configuration. Notice that
+                // our priority is 1 higher than ngRepeat - this will
+                // be compiled before the ngRepeat compiles.
+                return({
+                    compile: compile,
+                    priority: 1001,
+                    restirct: "A"
+                });
+ 
+ 
+            }
+        );
+ 
+ 
+    </script>
+ 
+</body>
+</html>

@@ -1,0 +1,173 @@
+<section class="artistinfo">
+	
+	
+  <div class="artist cf" ng-model="blogentries">
+  	
+    <h1>{{item.title}}</h1>
+    
+    <div class="info">
+      <h3>{{blogentries.title}}</h3>
+ 
+      <div class="bio  post-header">By: {{blogentries.author.firstName}} {{blogentries.author.lastName}}  
+       &nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="badge"> {{blogentries.comments.length}}  </span> Comments 
+       <br />
+ 		
+      {{blogentries.createdOn | date:'medium'}}
+       <br />
+       </div>
+    </div>
+    
+      <div class="bio">
+      {{blogentries.body}}  
+     
+        </div>
+    </div>
+  </div>
+    <br />  <br /> 
+  <a href="#/list">&laquo; Back to posts</a>
+  
+  <h4>
+  	Comments:
+  </h4>
+  <section class="comments"> 
+        <div   ng-repeat="item in blogentries.comments">
+      <div class=" comment-content"   >
+      <article  class="comment">
+          <header> <cite class="vcard"> <a class="url fn" href="mailto:{{item.email}}" title=""><span class="user">{{item.name}}</span></a> </cite>
+          	<time>{{item.createdOn}}</time>
+         <!--	 <a class="comment-reply-link" href="" >Reply</a> -->
+          </header>
+          <div>
+          <p>  {{item.body}}</p>
+        </div>
+        </article>
+    </div>
+    </div>
+	
+ <p>
+ 	&nbsp;
+ </p>
+ 
+
+ 
+ 
+	<!-- FORM -->
+	<form    class="form-horizontal" id="commentform"  ng-submit="processForm()">
+	<fieldset>
+		<input type="hidden"  name="post"  value="{{blogentries.postID}}  ">
+		<legend>Add Comment:</legend>
+		<!-- Form Name -->
+ 
+		<!-- NAME -->
+		<div id="name-group" class="form-group input-group-sm" ng-class="{ 'has-error' : errorName }">
+			<label class="col-md-1 control-label" >Name</label>
+			  <div class="col-md-3">
+			<input type="text" name="name" class="form-control " placeholder="name" ng-model="formData.name">
+			<!--<span class="help-block" ng-show="errorName">{{ errorName }}</span>-->
+			</div>
+		</div>
+		
+		<!-- email -->
+		<div id="email-group" class="form-group" ng-class="{ 'has-error' : erroremail }">
+			<label class="col-md-1  control-label">email</label>
+			  <div class="col-md-3">
+			<input type="text" name="email" class="form-control " placeholder="email" ng-model="formData.email">
+			<!--<span class="help-block" ng-show="erroremail">{{ erroremail }}</span>-->
+		</div>
+		</div>
+
+		<!-- website -->
+		<div id="website-group" class="form-group" ng-class="{ 'has-error' : errorwebsite }">
+			<label class="col-md-1  control-label">website</label>
+			  <div class="col-md-3">
+			<input type="text" name="website" class="form-control input-md" placeholder="website" ng-model="formData.website">
+		<!--	<span class="help-block" ng-show="errorwebsite">{{ errorwebsite }}</span>-->
+		</div>
+		</div>
+
+		<!-- body -->
+		<div id="body-group" class="form-group" ng-class="{ 'has-error' : errorbody }">
+			<label class="col-md-1  control-label">Comment</label>
+			  <div class="col-md-3">
+				<textarea name="body" id="body" class="form-control" placeholder="class" ng-model="formData.body"></textarea> 
+
+			<!--<span class="help-block" ng-show="errorbody">{{ errorbody }}</span>-->
+		</div>
+		</div>
+		
+ 
+  	<div class="col-md-2  col-md-offset-1">
+		<!-- SUBMIT BUTTON -->
+		<button type="submit" class="btn  btn-primary btn-block">aa
+			<span class="glyphicon glyphicon-flash"></span> Submit!
+		</button>
+	</div>
+</fieldset>	
+	</form>
+
+	
+ </section>	
+	
+<!--
+commentID
+	
+body
+	
+name
+	
+email
+	
+website
+	
+createdOn
+	
+updatedOn
+
+
+
+<script>
+
+ 
+
+			// create a blank object to hold our form information
+			// $scope will allow this to pass between controller and view
+			// formData = {};
+
+
+
+ 
+
+			$( "#commentform" ).submit(function( event ) {
+			//	alert( "Handler for .submit() called." );
+				processForm();
+				event.preventDefault();
+			});
+
+			// process the form
+			 processForm = function() {
+				 var postData = $(this).serializeArray();
+				 var data = $( "#commentform" ).serialize();
+			    
+			    $.ajax(
+			    {
+			        url : '/_BlogFW1_Angular/index.cfm?action=main.addcomment',
+			        type: "POST",
+			        data : data,
+			        success:function(data, textStatus, jqXHR)
+			        {
+			        // alert('success')   //data: return data from server
+			        },
+			        error: function(jqXHR, textStatus, errorThrown)
+			        {
+			            //if fails    
+			            // alert('fails')  
+			        }
+			    });
+
+			};
+
+	 
+
+	</script>
+-->
