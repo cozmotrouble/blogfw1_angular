@@ -1,6 +1,6 @@
 component extends="org.corfield.framework" {
 	
-	This.name = "FW1_blog#createuUID()#ssasssds";
+	This.name = "FW1_blog#createuUID()#ssasssssds";
 	This.ormenabled = true;
 	This.datasource = "apptacular_blog" ;
 	This.customTagPaths = GetDirectoryFromPath(GetCurrentTemplatePath()) & "customtags";
@@ -59,7 +59,7 @@ component extends="org.corfield.framework" {
         // bean factory should look in the model tree for services and beans
    		//request.context.startTime = getTickCount();
 		// var bf = new org.corfield.ioc( "model" );
-		var beanFactory = new _BlogFW1_Angular.org.corfield.ioc( "model" );
+		var beanFactory = new org.corfield.ioc( "model" );
 		application.beanFactory =beanFactory;
         setBeanFactory( beanFactory );
     }
