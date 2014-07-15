@@ -59,7 +59,7 @@
 		<div id="name-group" class="form-group input-group-sm" ng-class="{ 'has-error' : errorName }">
 			<label class="col-md-1 control-label">Name</label>
 			<div class="col-md-3">
-				<input type="text" name="name" id="name" class="form-control " placeholder="name" ng-model="formData.name">
+				<input type="text" name="name" id="name" class="form-control " placeholder="name" ng-model="formData.name" required />
 				<!--<span class="help-block" ng-show="errorName">{{ errorName }}</span>-->
 			</div>
 		</div>
@@ -68,7 +68,7 @@
 		<div id="email-group" class="form-group" ng-class="{ 'has-error' : erroremail }">
 			<label class="col-md-1  control-label">email</label>
 			<div class="col-md-3">
-				<input type="text" name="email" id="email" class="form-control " placeholder="email" ng-model="formData.email">
+				<input type="email" name="email" id="email" class="form-control " placeholder="email" ng-model="formData.email"  required />
 				<!--<span class="help-block" ng-show="erroremail">{{ erroremail }}</span>-->
 			</div>
 		</div>
@@ -77,7 +77,7 @@
 		<div id="website-group" class="form-group" ng-class="{ 'has-error' : errorwebsite }">
 			<label class="col-md-1  control-label">website</label>
 			<div class="col-md-3">
-				<input type="text" name="website" id="website" class="form-control input-md" placeholder="website" ng-model="formData.website">
+				<input type="url" name="website" id="website" class="form-control input-md" placeholder="website" ng-model="formData.website" required />
 				<!--	<span class="help-block" ng-show="errorwebsite">{{ errorwebsite }}</span>-->
 			</div>
 		</div>
