@@ -1,4 +1,3 @@
-
 component persistent="true" mappedSuperClass="false"{
 
 	property name="commentID" ormtype="integer" type="numeric" fieldtype="id" generator="native" ;
