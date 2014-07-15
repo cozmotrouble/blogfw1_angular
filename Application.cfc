@@ -23,7 +23,7 @@ component extends="org.corfield.framework" {
 		// whether to omit /index.cfm in SES URLs:
 		SESOmitIndex = false,
 		// location used to find layouts / views:
- 
+ 			usingSubsystem = true,
 		// list of file extensions that FW/1 should not handle:
 		unhandledExtensions = 'cfc',
 		// list of (partial) paths that FW/1 should not handle:

@@ -54,7 +54,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-           <cfoutput> <a class="navbar-brand" href="/_BlogFW1_Angular/##/list">Blog posts</a></cfoutput>
+           <cfoutput> <a class="navbar-brand" href="/blogfw1_angular/##/list">Blog posts</a></cfoutput>
           </div>
           <div class="navbar-collapse collapse">
    <!---         <ul class="nav navbar-nav">
