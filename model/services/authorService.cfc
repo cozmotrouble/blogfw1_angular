@@ -1,4 +1,4 @@
-/* NOTE: Any changes you make to this CFC will be written over if you regenerate the application.*/
+
 component persistent="false" mappedSuperClass="false"{
 
 
